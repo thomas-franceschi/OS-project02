@@ -1,0 +1,6 @@
+*.o
+*.swp
+*.dSYM
+*~
+lsort
+measure

@@ -18,10 +18,20 @@ List::~List() {
 		next = curr->next;
 		delete curr;
 	}
-	
+
 }
 
 void List::push_front(const std::string &s) {
+
+	if( head == nullptr ) {
+		head = new Node{s, std::stoi(s), nullptr};
+	} else {
+
+		Node *temp = head;
+		head = new Node{s, std::stoi(s), temp->next};
+
+	}
+
 }
 
 // vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:

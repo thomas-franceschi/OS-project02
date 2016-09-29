@@ -17,7 +17,7 @@ void stl_sort(List &l, bool numeric) {
     sort( myVec.begin(), myVec.end());
 
     //Put sorted vector back into linked list
-    copy( myVec.begin(), myVec.end(), back_inserter( l ) );
+    copy( myVec.begin(), myVec.end(), back_inserter( l ) ); //not sure if real
 }
 
 // vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:

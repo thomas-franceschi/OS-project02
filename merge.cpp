@@ -1,11 +1,13 @@
 // merge.cpp
+//Thomas Franceschi
+//Kyle Williams
+
+//NOTE TO SELF: Initialize ALL pointers
 
 #include "lsort.h"
-
 #include <iostream>
 
 // Prototypes
-
 Node *msort(Node *head, CompareFunction compare);
 void  split(Node *head, Node *&left, Node *&right);
 Node *merge(Node *left, Node *right, CompareFunction compare);
@@ -27,7 +29,7 @@ Node *msort(Node *head, CompareFunction compare) {
     // Divide into left and right sublists
     split( head, left, right);
 
-    // Conquer left and right sublists
+    // Conquer left and right sublists (recurse)
     left = msort( left, compare );
     right = msort( right, compare );
 
@@ -38,12 +40,13 @@ Node *msort(Node *head, CompareFunction compare) {
 }
 
 void split(Node *head, Node *&left, Node *&right) {
-    Node *slow_ptr = head,*fast_ptr = head;
+    //intialize variables
+    Node *slow_ptr = head, *fast_ptr = head;
 
     //find middle of list
     while(!slow_ptr && !fast_ptr && fast_ptr->next != NULL) {
-        slow_ptr = slow_ptr->next;  // moves one node ahead at a time
-        fast_ptr = fast_ptr->next->next;  // moves two nodes ahead at a time
+        slow_ptr = slow_ptr->next;  //move slow pointer 1 node each iteration
+        fast_ptr = fast_ptr->next->next;  //move fast pointer 2 nodes each iteration
     }
 
     //split list
@@ -54,50 +57,50 @@ void split(Node *head, Node *&left, Node *&right) {
 
 Node *merge(Node *left, Node *right, CompareFunction compare) {
 
-    //initalize variaables
-    Node *leftComp = left, *rightComp = right, *sorted = nullptr, *newHead = nullptr;
+    //initalize variables
+    Node *curr = nullptr, *newHead = nullptr;
 
     //set head of list
-    if (compare(leftComp, rightComp)) {
-            newHead = leftComp;
+    if (compare(left, right)) {
+            newHead = left;
             //iterate list value is taken from
-            leftComp = leftComp->next;
+            left = left->next;
         }
         else {
-            newHead = rightComp;
+            newHead = right;
             //iterate list value is taken from
-            rightComp = rightComp->next;
+            right = right->next;
         }
 
+        //set head to curr (I got so many errors because I forgot to do this forever)
+        curr = newHead;
 
-    //march through both lists, compare and fill new sorted list
-    while(leftComp != nullptr && rightComp != nullptr){
+    //march through both lists, compare and fill new curr list
+    while(left != nullptr && right != nullptr){
 
         //compare current node in each list
-        if (compare(leftComp, rightComp)) {
-            //set current value in sorted list
-            sorted->next = leftComp;
+        if (compare(left, right)) {
+            //set current value in curr list
+            curr->next = left;
             //iterated left list past just used value
-            leftComp = leftComp->next;
-            //iterate sorted list so it doesn't overwrite old value'
-            sorted = sorted->next;
+            left = left->next;
+            //iterate curr list so it doesn't overwrite old value'
+            curr = curr->next;
         }
         else {
-            //set current value in sorted list
-            sorted->next = rightComp;
+            //set current value in curr list
+            curr->next = right;
             //iterate list to next value
-            rightComp = rightComp->next;
-            //iterate sorted list
-            sorted = sorted->next;
+            right = right->next;
+            //iterate curr list
+            curr = curr->next;
         }
     }
 
-    //fill in rest of sorted list if one has not reached end yet
-    if(leftComp != nullptr) sorted->next = leftComp;
-    else if(rightComp != nullptr) sorted->next = rightComp;
+    //fill in rest of curr list if one has not reached end yet
+    if(left != nullptr) curr->next = left;
+    else if(right != nullptr) curr->next = right;
 
     //return new head of new list
     return newHead;
 }
-
-// vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:

@@ -2,22 +2,28 @@
 
 #include "lsort.h"
 
-#include <algorithm>
-#include <iostream>
 #include <vector>
-
-using namespace std;
+#include <algorithm>
 
 void stl_sort(List &l, bool numeric) {
 
-    //I found this on stack exchange?
-    //should copy list contents to vector
-    vector<Node> myVec{ begin(l), end(l) };
+    std::vector<Node*> listVec;
 
-    sort( myVec.begin(), myVec.end());
+    while(l.head != nullptr){
+    	listVec.push_back(l.head);
+    	l.head = l.head->next;
+    }
 
-    //Put sorted vector back into linked list
-    copy( myVec.begin(), myVec.end(), back_inserter( l ) ); //not sure if real
+    if(numeric){
+    	std::sort(listVec.begin(), listVec.end(), node_number_compare);
+    } else {
+    	std::sort(listVec.begin(), listVec.end(), node_string_compare);
+    }
+
+    for(int i = listVec.size() - 1; i >= 0; i--){
+    	l.push_front(listVec[i]->string);
+    }
+
 }
 
 // vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:

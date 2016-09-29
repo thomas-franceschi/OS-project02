@@ -3,6 +3,7 @@
 #include "lsort.h"
 
 #include <memory>
+#include <string>
 
 List::List() {
 
@@ -24,10 +25,19 @@ List::~List() {
 void List::push_front(const std::string &s) {
 
 	if( head == nullptr ) {
-		head = new Node{s, std::stoi(s), nullptr};
+		if(!std::stoi(s)){
+			head = new Node{s, 0, nullptr};
+		} else {
+			head = new Node{s, std::stoi(s), nullptr};
+		}
 	} else {
 		Node *temp = head;
-		head = new Node{s, std::stoi(s), temp};
+		
+		if(!std::stoi(s)){
+			head = new Node{s, 0, temp};
+		} else {
+			head = new Node{s, std::stoi(s), temp};
+		}
 	}
 	size++;
 }

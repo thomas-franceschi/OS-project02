@@ -5,6 +5,8 @@
 #include <iostream>
 #include <cstring>
 
+#include <iostream>
+
 bool node_number_compare(const Node *a, const Node *b) {
 	return a->number < b->number;
 }
@@ -14,12 +16,20 @@ bool node_string_compare(const Node *a, const Node *b) {
 }
 
 int void_number_compare(const void *a, const void *b) {
-	return a < b ;
+
+	Node *numA = *(Node **)a;
+	Node *numB = *(Node **)b;
+
+	return numA->number > numB->number;
 }
 
 int void_string_compare(const void *a, const void *b) {
-	// if(std::strcmp(a, b) <= 0) return 0;
-	// else return 1;
+
+	Node *stringA = *(Node **)a;
+	Node *stringB = *(Node **)b;
+
+	if(std::strcmp(stringA->string.c_str(), stringB->string.c_str()) <= 0) return 0;
+	else return 1;
 }
 
 void dump_node(Node *n) {

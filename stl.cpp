@@ -2,15 +2,12 @@
 
 #include "lsort.h"
 
-#include <algorithm>
-#include <iostream>
 #include <vector>
-
-using namespace std;
+#include <algorithm>
 
 void stl_sort(List &l, bool numeric) {
 
-    vector<Node*> listVec;
+    std::vector<Node*> listVec;
 
     while(l.head != nullptr){
     	listVec.push_back(l.head);
@@ -21,7 +18,6 @@ void stl_sort(List &l, bool numeric) {
     	std::sort(listVec.begin(), listVec.end(), node_number_compare);
     } else {
     	std::sort(listVec.begin(), listVec.end(), node_string_compare);
-
     }
 
     for(int i = listVec.size() - 1; i >= 0; i--){

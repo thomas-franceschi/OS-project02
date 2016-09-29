@@ -7,7 +7,7 @@
 List::List() {
 
 	head = nullptr;
-	length = 0;
+	size = 0;
 }
 
 List::~List() {
@@ -26,12 +26,10 @@ void List::push_front(const std::string &s) {
 	if( head == nullptr ) {
 		head = new Node{s, std::stoi(s), nullptr};
 	} else {
-
 		Node *temp = head;
-		head = new Node{s, std::stoi(s), temp->next};
-
+		head = new Node{s, std::stoi(s), temp};
 	}
-
+	size++;
 }
 
 // vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:

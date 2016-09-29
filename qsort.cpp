@@ -23,13 +23,13 @@ void qsort_sort(List &l, bool numeric) {
 
     //I found this on stack exchange?
     //should copy list contents to vector
-    vector<Node> myVec{ begin(l), end(l) };
+    // vector<Node> myVec{ begin(l), end(l) };
 
-    //sort vector
-    qsort( myVec.begin(), myVec.size(),sizeof(int), compare_thing_goes_here );
+    // //sort vector
+    // qsort( myVec.begin(), myVec.size(),sizeof(int), compare_thing_goes_here );
 
-    //Put sorted vector back into linked list
-    copy( myVec.begin(), myVec.end(), back_inserter( l ) ); //not sure if real
+    // //Put sorted vector back into linked list
+    // copy( myVec.begin(), myVec.end(), back_inserter( l ) ); //not sure if real
 }
 
 // vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:

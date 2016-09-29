@@ -8,21 +8,23 @@
 #include <iostream>
 
 // Prototypes
-Node *msort(Node *head, CompareFunction compare);
-void  split(Node *head, Node *&left, Node *&right);
-Node *merge(Node *left, Node *right, CompareFunction compare);
+Node *msort( Node *head, CompareFunction compare );
+void  split( Node *head, Node *&left, Node *&right );
+Node *merge( Node *left, Node *right, CompareFunction compare );
 
 // Implementations
 
-void merge_sort(List &l, bool numeric) {
+void merge_sort( List &l, bool numeric ) {
     //sort either numeric or string
-    if (numeric) l.head = msort( l.head, node_number_compare );
+    if ( numeric ) l.head = msort( l.head, node_number_compare );
     else l.head = msort( l.head, node_string_compare );
 }
 
-Node *msort(Node *head, CompareFunction compare) {
-    Node *left = nullptr, *right = nullptr; //initialize left and right list pointers
-    
+Node *msort( Node *head, CompareFunction compare ) {
+
+    //initialize variables
+    Node *left = nullptr, *right = nullptr; 
+
     // Handle base case
     if ( head->next == nullptr ) return head;
 
@@ -34,17 +36,19 @@ Node *msort(Node *head, CompareFunction compare) {
     right = msort( right, compare );
 
     // Combine left and right sublists
-    head = merge(left, right, compare);
+    head = merge( left, right, compare );
 
+    //return head pointer of newly sorted list
     return head;
 }
 
-void split(Node *head, Node *&left, Node *&right) {
+void split( Node *head, Node *&left, Node *&right ) {
+
     //intialize variables
     Node *slow_ptr = head, *fast_ptr = head;
 
     //find middle of list
-    while(!slow_ptr && !fast_ptr && fast_ptr->next != NULL) {
+    while( !slow_ptr && !fast_ptr && fast_ptr->next != NULL ) {
         slow_ptr = slow_ptr->next;  //move slow pointer 1 node each iteration
         fast_ptr = fast_ptr->next->next;  //move fast pointer 2 nodes each iteration
     }
@@ -55,13 +59,13 @@ void split(Node *head, Node *&left, Node *&right) {
     slow_ptr->next = nullptr; //set end of left list
 }
 
-Node *merge(Node *left, Node *right, CompareFunction compare) {
+Node *merge( Node *left, Node *right, CompareFunction compare ) {
 
     //initalize variables
     Node *curr = nullptr, *newHead = nullptr;
 
     //set head of list
-    if (compare(left, right)) {
+    if ( compare( left, right )) {
             newHead = left;
             //iterate list value is taken from
             left = left->next;
@@ -72,19 +76,19 @@ Node *merge(Node *left, Node *right, CompareFunction compare) {
             right = right->next;
         }
 
-        //set head to curr (I got so many errors because I forgot to do this forever)
+        //set curr pointer to head of list (I got so many errors because I forgot to do this forever)
         curr = newHead;
 
     //march through both lists, compare and fill new curr list
-    while(left != nullptr && right != nullptr){
+    while( left != nullptr && right != nullptr ){
 
         //compare current node in each list
-        if (compare(left, right)) {
+        if ( compare( left, right )) {
             //set current value in curr list
             curr->next = left;
             //iterated left list past just used value
             left = left->next;
-            //iterate curr list so it doesn't overwrite old value'
+            //iterate curr list so it doesn't overwrite old value
             curr = curr->next;
         }
         else {
@@ -98,8 +102,8 @@ Node *merge(Node *left, Node *right, CompareFunction compare) {
     }
 
     //fill in rest of curr list if one has not reached end yet
-    if(left != nullptr) curr->next = left;
-    else if(right != nullptr) curr->next = right;
+    if( left != nullptr ) curr->next = left;
+    else if( right != nullptr ) curr->next = right;
 
     //return new head of new list
     return newHead;

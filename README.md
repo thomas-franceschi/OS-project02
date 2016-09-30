@@ -1,8 +1,3 @@
-Thomas Franceschi
-netid:tfrances
-
-Kyle Williams
-netid:kwilli20
 
 
 Project 02: lsort

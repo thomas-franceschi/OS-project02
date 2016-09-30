@@ -23,14 +23,14 @@ clean:
 test:		test-output test-memory test-time
 
 test-output:	$(PROGRAMS)
-	@echo "Testing output (stl string)..."
-	@diff --suppress-common-lines -y <(./lsort -m stl      < input) output.string
-	@echo "Testing output (stl number)..."
-	@diff --suppress-common-lines -y <(./lsort -m stl -n   < input) output.number
-	@echo "Testing output (qsort string)..."
-	@diff --suppress-common-lines -y <(./lsort -m qsort    < input) output.string
-	@echo "Testing output (qsort number)..."
-	@diff --suppress-common-lines -y <(./lsort -m qsort -n < input) output.number
+	# @echo "Testing output (stl string)..."
+	# @diff --suppress-common-lines -y <(./lsort -m stl      < input) output.string
+	# @echo "Testing output (stl number)..."
+	# @diff --suppress-common-lines -y <(./lsort -m stl -n   < input) output.number
+	# @echo "Testing output (qsort string)..."
+	# @diff --suppress-common-lines -y <(./lsort -m qsort    < input) output.string
+	# @echo "Testing output (qsort number)..."
+	# @diff --suppress-common-lines -y <(./lsort -m qsort -n < input) output.number
 	@echo "Testing output (merge string)..."
 	@diff --suppress-common-lines -y <(./lsort -m merge    < input) output.string
 	@echo "Testing output (merge number)..."

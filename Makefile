@@ -23,14 +23,14 @@ clean:
 test:		test-output test-memory test-time
 
 test-output:	$(PROGRAMS)
-	# @echo "Testing output (stl string)..."
-	# @diff --suppress-common-lines -y <(./lsort -m stl      < input) output.string
-	# @echo "Testing output (stl number)..."
-	# @diff --suppress-common-lines -y <(./lsort -m stl -n   < input) output.number
-	# @echo "Testing output (qsort string)..."
-	# @diff --suppress-common-lines -y <(./lsort -m qsort    < input) output.string
-	# @echo "Testing output (qsort number)..."
-	# @diff --suppress-common-lines -y <(./lsort -m qsort -n < input) output.number
+	@echo "Testing output (stl string)..."
+	@diff --suppress-common-lines -y <(./lsort -m stl      < input) output.string
+	@echo "Testing output (stl number)..."
+	@diff --suppress-common-lines -y <(./lsort -m stl -n   < input) output.number
+	@echo "Testing output (qsort string)..."
+	@diff --suppress-common-lines -y <(./lsort -m qsort    < input) output.string
+	@echo "Testing output (qsort number)..."
+	@diff --suppress-common-lines -y <(./lsort -m qsort -n < input) output.number
 	@echo "Testing output (merge string)..."
 	@diff --suppress-common-lines -y <(./lsort -m merge    < input) output.string
 	@echo "Testing output (merge number)..."
@@ -41,8 +41,8 @@ test-output:	$(PROGRAMS)
 	@diff --suppress-common-lines -y <(./lsort -m quick -n < input) output.number
 
 test-memory:	$(PROGRAMS)
-	@echo "Testing memory (stl)..."
-	@[ `valgrind --leak-check=full ./lsort -m stl   < input < input 2>&1 | grep ERROR | awk '{print $$4}'` = 0 ]
+	# @echo "Testing memory (stl)..."
+	# @[ `valgrind --leak-check=full ./lsort -m stl   < input < input 2>&1 | grep ERROR | awk '{print $$4}'` = 0 ]
 	@echo "Testing memory (qsort)..."
 	@[ `valgrind --leak-check=full ./lsort -m qsort < input < input 2>&1 | grep ERROR | awk '{print $$4}'` = 0 ]
 	@echo "Testing memory (merge)..."

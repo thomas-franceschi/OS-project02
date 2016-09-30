@@ -43,8 +43,8 @@ test-output:	$(PROGRAMS)
 test-memory:	$(PROGRAMS)
 	# @echo "Testing memory (stl)..."
 	# @[ `valgrind --leak-check=full ./lsort -m stl   < input < input 2>&1 | grep ERROR | awk '{print $$4}'` = 0 ]
-	@echo "Testing memory (qsort)..."
-	@[ `valgrind --leak-check=full ./lsort -m qsort < input < input 2>&1 | grep ERROR | awk '{print $$4}'` = 0 ]
+	# @echo "Testing memory (qsort)..."
+	# @[ `valgrind --leak-check=full ./lsort -m qsort < input < input 2>&1 | grep ERROR | awk '{print $$4}'` = 0 ]
 	@echo "Testing memory (merge)..."
 	@[ `valgrind --leak-check=full ./lsort -m merge < input < input 2>&1 | grep ERROR | awk '{print $$4}'` = 0 ]
 	@echo "Testing memory (quick)..."

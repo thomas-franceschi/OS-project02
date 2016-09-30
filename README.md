@@ -1,3 +1,10 @@
+Thomas Franceschi
+netid:tfrances
+
+Kle Williams
+netid:kwilli20
+
+
 Project 02: lsort
 ===================
 

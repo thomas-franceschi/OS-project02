@@ -23,9 +23,10 @@ void qsort_sort(List &l, bool numeric) {
     }
 
     l.head = listVec[0];
-    for(int i = 0; i < listVec.size(); i++){
+    for(int i = 0; i < listVec.size() - 1; i++){
         listVec[i]->next = listVec[i+1];
     }
+    listVec[listVec.size()-1]->next = nullptr;
 }
 
 // vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:

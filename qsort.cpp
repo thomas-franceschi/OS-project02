@@ -16,6 +16,8 @@ void qsort_sort(List &l, bool numeric) {
         l.head = l.head->next;
     }
 
+    l.head = nullptr;
+
     if(numeric){
         std::qsort(&listVec[0], l.size, sizeof(Node *), void_number_compare);
     } else {

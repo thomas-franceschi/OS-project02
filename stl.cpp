@@ -1,4 +1,6 @@
 // stl.cpp
+// Kyle Williams
+// Thomas Franceschi
 
 #include "lsort.h"
 
@@ -13,6 +15,8 @@ void stl_sort(List &l, bool numeric) {
     	listVec.push_back(l.head);
     	l.head = l.head->next;
     }
+
+    l.head = nullptr;
 
     if(numeric){
     	std::sort(listVec.begin(), listVec.end(), node_number_compare);

@@ -1,4 +1,6 @@
 // lsort.h
+// Kyle Williams
+// Thomas Franceschi
 
 #pragma once
 

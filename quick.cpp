@@ -1,9 +1,10 @@
 // quick.cpp
+// Kyle Williams
+// Thomas Franceschi
 
 #include "lsort.h"
 
 #include <iostream>
-using namespace std;
 
 // Prototypes
 

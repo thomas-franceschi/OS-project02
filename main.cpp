@@ -1,4 +1,6 @@
 // lsort.cpp
+// Kyle Williams
+// Thomas Franceschi
 
 #include "lsort.h"
 

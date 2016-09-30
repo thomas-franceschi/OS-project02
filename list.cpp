@@ -25,13 +25,6 @@ List::~List() {
 void List::push_front(const std::string &s) {
 
 	if( head == nullptr ) {
-<<<<<<< HEAD
-		head = new Node{s, std::stoi(s), nullptr};
-	} 
-	else {
-		Node *temp = head;
-		head = new Node{s, std::stoi(s), temp->next};
-=======
 		if(!std::stoi(s)){
 			head = new Node{s, 0, nullptr};
 		} else {
@@ -45,7 +38,6 @@ void List::push_front(const std::string &s) {
 		} else {
 			head = new Node{s, std::stoi(s), temp};
 		}
->>>>>>> 56d94ffafb839f748951050ef5336316a7ccd317
 	}
 	size++;
 }

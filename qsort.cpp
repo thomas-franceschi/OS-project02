@@ -1,4 +1,6 @@
 // qsort.cpp
+// Kyle Williams
+// Thomas Franceschi
 
 #include "lsort.h"
 
@@ -15,9 +17,9 @@ void qsort_sort(List &l, bool numeric) {
     }
 
     if(numeric){
-        std::qsort(&listVec[0], listVec.size(), sizeof(Node *), void_number_compare);
+        std::qsort(&listVec[0], l.size, sizeof(Node *), void_number_compare);
     } else {
-        std::qsort(&listVec[0], listVec.size(), sizeof(Node *), void_string_compare);
+        std::qsort(&listVec[0], l.size, sizeof(Node *), void_string_compare);
     }
 
     for(int i = listVec.size() - 1; i >= 0; i--){

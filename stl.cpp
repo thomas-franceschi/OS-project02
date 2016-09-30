@@ -16,16 +16,15 @@ void stl_sort(List &l, bool numeric) {
     	l.head = l.head->next;
     }
 
-    l.head = nullptr;
-
     if(numeric){
     	std::sort(listVec.begin(), listVec.end(), node_number_compare);
     } else {
     	std::sort(listVec.begin(), listVec.end(), node_string_compare);
     }
 
-    for(int i = listVec.size() - 1; i >= 0; i--){
-    	l.push_front(listVec[i]->string);
+    l.head = listVec[0];
+    for(int i = 0; i < listVec.size(); i++){
+        listVec[i]->next = listVec[i+1];
     }
 
 }

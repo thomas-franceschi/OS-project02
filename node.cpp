@@ -5,8 +5,6 @@
 #include <iostream>
 #include <cstring>
 
-#include <iostream>
-
 bool node_number_compare(const Node *a, const Node *b) {
 	return a->number < b->number;
 }

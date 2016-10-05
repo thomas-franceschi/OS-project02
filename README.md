@@ -1,7 +1,10 @@
 
-
 Project 02: lsort
 ===================
+
+Kyle Williams (kwilli20)
+
+Thomas Franceschi (tfrances)
 
 This is a simple implementation of the Unix [sort] utility that works on
 [singly-linked lists].
